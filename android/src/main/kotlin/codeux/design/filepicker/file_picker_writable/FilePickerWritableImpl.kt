@@ -52,7 +52,9 @@ class FilePickerWritableImpl(
     filePickerResult = result
     val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
       addCategory(Intent.CATEGORY_OPENABLE)
-      type = "*/*"
+      type = "application/*"
+      val mimetypes = arrayOf<String>("application/octet-stream", "application/x-binary", "application/zip", "application/x-zip")
+      putExtra(Intent.EXTRA_MIME_TYPES, mimetypes)
     }
     val activity = requireActivity()
     try {
